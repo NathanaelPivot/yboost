@@ -1,0 +1,32 @@
+<form [formGroup]="cocktailForm" (ngSubmit)="onSubmit()">
+  <h3>Ajouter un cocktail</h3>
+  <div>
+    <label for="name">Nom du Cocktail</label>
+    <input id="name" formControlName="name" type="text">
+  </div>
+
+  <div>
+    <label for="price">Prix</label>
+    <input id="price" formControlName="price" type="number">
+   </div>
+
+  <div>
+    <label for="image">Image</label>
+    <input id="image" formControlName="image" type="text">
+  </div>
+
+  <div formArrayName="ingredients">
+    <div *ngFor="let ingredient of ingredients.controls; let i = index" [formGroupName]="i">
+      <label for="ingredient-name-{{ i }}">Nom de l'Ingrédient</label>
+      <input id="ingredient-name-{{ i }}" formControlName="name" type="text">
+
+      <label for="ingredient-quantity-{{ i }}">Quantité</label>
+      <input id="ingredient-quantity-{{ i }}" formControlName="quantity" type="text">
+
+      <button type="button" (click)="removeIngredient(i)">Supprimer</button>
+    </div>
+    <button type="button" (click)="addIngredient()">Ajouter Ingrédient</button>
+  </div>
+
+  <button type="submit" [disabled]="cocktailForm.invalid">Ajouter Cocktail</button>
+</form>

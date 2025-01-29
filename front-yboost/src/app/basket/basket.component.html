@@ -1,0 +1,5 @@
+<section>
+    <div class="commande" *ngFor="let article of basket$ | async">
+        <p>{{article.name}}</p>
+    </div>
+</section>

@@ -1,0 +1,5 @@
+<p *ngIf="cocktail">{{cocktail.name}}</p>
+<img src="/assets/images/{{cocktail.image}}" alt="{{cocktail.name}}">
+<div *ngFor="let ingredient of ingredients">
+    <p>{{ingredient.name}}</p>
+</div>

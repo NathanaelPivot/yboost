@@ -1,0 +1,8 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    body::-webkit-scrollbar {
+        display: none; /* Cache la barre de défilement */
+    }
+}

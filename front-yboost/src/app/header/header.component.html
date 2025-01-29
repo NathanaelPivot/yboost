@@ -1,0 +1,12 @@
+<header>
+    <div class="accueil-ctn">
+        <button routerLink="/" onload="updateStatus()">Accueil</button>
+    </div>
+
+    <div class="login-panier">
+        <button routerLink="/commande">Commande</button>
+        <button *ngIf="!isLogged" routerLink="/login">Login</button>
+        <button *ngIf="isLogged" routerLink="/profil">Profil</button>
+        <button *ngIf="isLogged" routerLink="/dashboard">Dashboard</button>
+    </div>
+</header>
