@@ -4,10 +4,8 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { DetailComponent } from './detail/detail.component';
 import { LoginComponent } from './login/login.component';
 import { BasketComponent } from './basket/basket.component';
-import { AuthGuard } from './auth/auth.guard';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
-import { ProfilComponent } from './profil/profil.component';
+import { CommandesComponent } from './commandes/commandes.component';
 import { CocktailFormComponent } from './cocktail-form/cocktail-form.component';
 import { CocktailListComponent } from './cocktail-list/cocktail-list.component';
 
@@ -17,9 +15,9 @@ const routes: Routes = [
   { path: 'detail/:id', component: DetailComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profil', component: ProfilComponent },
-  { path: 'commande', component: BasketComponent },
-  
+  { path: 'commandes', component: CommandesComponent },
+  { path: 'panier', component: BasketComponent },
+
   { path: 'dashboard', component: CocktailListComponent },
   { path: 'add-cocktail', component: CocktailFormComponent },
   { path: 'edit-cocktail/:id', component: CocktailFormComponent }
@@ -27,6 +25,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  declarations: [
+  ]
 })
 export class AppRoutingModule { }

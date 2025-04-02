@@ -1,0 +1,92 @@
+.commande-ctn {
+  width: 100%;
+  min-height: 100vh;
+  padding: 50px 5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 100px));
+  /* Grille avec des tiles plus petites */
+  gap: 20px;
+  background: var(--background-gradient);
+  overflow-x: hidden;
+  justify-content: center;
+}
+
+.commande {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: fit-content;
+}
+
+.commande-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+
+}
+
+.id-cancel {
+  display: flex;
+  flex-direction: row;
+
+  .commande-nb {
+    color: #fff;
+  }
+
+  .cancel-commande {
+    background: var(--button-bg);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .cancel-commande:hover {
+    background: var(--button-hover);
+  }
+}
+
+
+
+.commande-id {
+  color: var(--text-highlight);
+}
+
+
+
+.cocktail-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  /* Espacement léger entre les cocktails */
+}
+
+.cocktail-name {
+  background: var(--highlight-bg);
+  color: var(--text-color);
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  min-width: 100px;
+  /* Ajuste la largeur minimale */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  margin: 0;
+  /* Pas d'espacement supplémentaire */
+}

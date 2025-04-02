@@ -1,0 +1,16 @@
+<section class="commande-ctn">
+  @for (commande of commandes; track $index) {
+  <div class="commande" (click)="updateCommande(commande.id)">
+    <div class="id-cancel">
+      <p class="commande-nb">Commande n°{{commande.id}}</p>
+      <button class="cancel-commande" (click)="cancelCommande(commande.id); $event.stopPropagation()">Annuler</button>
+    </div>
+
+    <div class="cocktail-list">
+      @for (cocktail of commande.cocktails; track $index) {
+      <div class="cocktail-name">{{cocktail.cocktail.name}}</div>
+      }
+    </div>
+  </div>
+  }
+</section>

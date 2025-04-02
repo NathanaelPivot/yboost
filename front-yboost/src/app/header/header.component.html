@@ -1,11 +1,11 @@
 <header>
-    <div class="accueil-ctn">
-        <img routerLink="/" src="assets/logo.png" alt="">
-    </div>
-    <div class="login-panier">
-        <button routerLink="/commande">Commande</button>
-        <button *ngIf="!isLogged" routerLink="/login">Login</button>
-        <button *ngIf="isLogged" routerLink="/profil">Profil</button>
-        <button *ngIf="isLogged" routerLink="/dashboard">Dashboard</button>
-    </div>
+  <div class="accueil-ctn">
+    <img routerLink="/" src="assets/logo.png" alt="">
+  </div>
+  <div class="login-panier">
+    <button routerLink="/panier">Panier</button>
+    <button *ngIf="!isLogged" routerLink="/login">Login</button>
+    <button *ngIf="isLogged" routerLink="/commandes">Commandes</button>
+    <button *ngIf="isLogged" routerLink="/dashboard">Dashboard</button>
+  </div>
 </header>

@@ -11,6 +11,7 @@ import { BasketService } from '../services/basket.service';
 export class AccueilComponent implements OnInit {
 
   cocktails: Cocktail[] = [];
+  public searchTerm: string = '';
 
   constructor(private readonly cocktailService: CocktailService, private readonly basketService: BasketService) { }
 
@@ -24,5 +25,9 @@ export class AccueilComponent implements OnInit {
 
   onImageError(event: Event) {
     (event.target as HTMLImageElement).src = 'assets/error_image.jpg';
+  }
+
+  searchTeams(e: any) {
+    this.searchTerm = e.detail.value;
   }
 }
