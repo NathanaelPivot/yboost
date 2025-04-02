@@ -7,7 +7,7 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Vérifier que l'on est en environnement client
     if (typeof window !== 'undefined' && window.localStorage) {
-      const token = localStorage.getItem('token'); // Exemple d'accès au localStorage
+      const token = localStorage.getItem('jwtToken'); // Exemple d'accès au localStorage
       if (token) {
         const clonedRequest = req.clone({
           setHeaders: { Authorization: `Bearer ${token}` }

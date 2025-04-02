@@ -1,5 +1,27 @@
-<p *ngIf="cocktail">{{cocktail.name}}</p>
-<img src="/assets/images/{{cocktail.image}}" alt="{{cocktail.name}}">
-<div *ngFor="let ingredient of ingredients">
-    <p>{{ingredient.name}}</p>
+<div class="cocktail-detail-container">
+  <!-- Bouton Retour -->
+  <button class="back-button" routerLink="/">Retour</button>
+
+  <!-- Image du cocktail -->
+  <div class="cocktail-image-container">
+    @if(cocktail){
+    <img [src]="'/assets/images/' + cocktail.image" (error)="onImageError($event)" alt="{{ cocktail.name }}">
+    }
+  </div>
+
+  <!-- Informations et ingrédients -->
+  <div class="cocktail-info">
+    <div class="cocktail-header">
+      @if (cocktail) {
+      <h2>{{cocktail.name}}</h2>
+      }
+      <button class="add-cocktail-button" (click)="addToBasket(cocktail)">Ajouter Cocktail</button>
+    </div>
+
+    <h3>Ingrédients</h3>
+    <div *ngFor="let ingredient of ingredients" class="ingredient-item">
+      <p>{{ingredient.name}}</p>
+      <span>{{ingredient.quantity}} </span>
+    </div>
+  </div>
 </div>

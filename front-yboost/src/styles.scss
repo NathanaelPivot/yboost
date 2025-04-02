@@ -1,8 +1,39 @@
-*{
+* {
     padding: 0;
     margin: 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    body::-webkit-scrollbar {
-        display: none; /* Cache la barre de défilement */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    max-width: 100%;
+
+    *::-webkit-scrollbar {
+        display: none;
+        /* Cache la barre de défilement */
     }
+}
+
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    margin-top: 12vh;
+    /* Décale tout le contenu sous le header */
+
+}
+
+section {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+:root {
+    --primary-color: #e74c3c; // Rouge fruité (cocktail)
+    --secondary-color: #f39c12; // Orange tropical
+    --accent-color: #3498db; // Bleu lagon
+    --background-gradient: linear-gradient(135deg, #2c3e50, #34495e); // Bleu nuit dégradé
+    --text-color: #ecf0f1; // Blanc cassé
+    --button-hover: #c0392b; // Rouge plus profond pour l’effet hover
+
+    --card-bg: rgba(255, 255, 255, 0.1); // Effet de carte translucide
+    --card-border: rgba(255, 255, 255, 0.2); // Bordure subtile
+    --button-bg: rgba(255, 255, 255, 0.2); // Fond de bouton léger
 }

@@ -1,13 +1,14 @@
 <section>
     <h1>Liste des Cocktails</h1>
-    <div *ngFor="let cocktail of cocktails" class="cocktail">
-        <div class="infos-ctn" routerLink="/detail/{{cocktail.id}}">
-            <img src="/assets/images/{{cocktail.image}}" alt="{{ cocktail.name }}">
-            <p>{{ cocktail.name }}</p>
-            <p>{{ cocktail.price | currency:'EUR' }}</p>
+    <div class="cocktails-container">
+        <div *ngFor="let cocktail of cocktails" class="cocktail">
+            <div class="infos-ctn" routerLink="/detail/{{cocktail.id}}">
+                <img [src]="'/assets/images/' + cocktail?.image" (error)="onImageError($event)"
+                    alt="{{ cocktail?.name }}">
+                <p>{{ cocktail.name }}</p>
+                <p>{{ cocktail.price | currency:'EUR' }}</p>
+            </div>
+            <button (click)="addToBasket(cocktail)">Ajouter</button>
         </div>
-
-        <button (click)="addToBasket(cocktail)">Ajouter</button>
-
     </div>
 </section>

@@ -1,0 +1,125 @@
+form {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    h3 {
+        text-align: center;
+        color: var(--text-color);
+        font-size: 1.8rem;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        label {
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid var(--card-border);
+            border-radius: 5px;
+            font-size: 1rem;
+            background: var(--input-bg);
+            color: var(--text-color);
+        }
+    }
+
+    button {
+        padding: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--text-color);
+        background: var(--button-bg);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background: var(--button-hover);
+            transform: scale(1.05);
+        }
+
+        &:disabled {
+            background: var(--button-disabled);
+            cursor: not-allowed;
+        }
+    }
+}
+
+/* Suggestions pour les ingrédients et les cocktails */
+.suggestions {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+
+    li {
+        padding: 10px;
+        cursor: pointer;
+        transition: background 0.2s;
+
+        &:hover {
+            background: var(--button-hover);
+            color: var(--text-light);
+        }
+    }
+
+    &.hidden {
+        display: none;
+    }
+}
+
+/* Style pour l'aperçu du cocktail sélectionné */
+.preview-cocktail {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    text-align: center;
+
+    h4 {
+        color: var(--text-color);
+        font-size: 1.5rem;
+    }
+
+    img {
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
+        object-fit: cover;
+        margin-top: 10px;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 8px 12px;
+        background: var(--danger);
+        border-radius: 5px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        transition: background 0.3s;
+
+        &:hover {
+            background: var(--danger-hover);
+        }
+    }
+}

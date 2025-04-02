@@ -1,0 +1,40 @@
+<div class="cocktail-form-container">
+    <div class="cocktail-form">
+        <h2>{{ cocktailId ? 'Modifier' : 'Ajouter' }} un Cocktail</h2>
+        <form [formGroup]="cocktailForm" (ngSubmit)="onSubmit()">
+            <div class="form-field">
+                <label>Nom</label>
+                <input formControlName="name" type="text" placeholder="Nom du cocktail" />
+            </div>
+
+            <div class="form-field">
+                <label>Prix</label>
+                <input formControlName="price" type="number" placeholder="Prix" />
+            </div>
+
+            <div class="form-field">
+                <label>Image</label>
+                <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+            </div>
+
+            <div class="ingredients-container" formArrayName="ingredients">
+                <div *ngFor="let ingredient of ingredients.controls; let i = index" class="ingredient-item"
+                    [formGroupName]="i">
+
+                    <input id="ingredient-input" formControlName="name" type="text" placeholder="Ingrédient">
+                    <input formControlName="quantity" type="number" placeholder="Quantité">
+                    <button type="button" (click)="removeIngredient(i)">⛌ Supprimer</button>
+
+                </div>
+            </div>
+
+            <button type="button" class="add-ingredient-btn" (click)="addIngredient()">
+                Ajouter un ingrédient
+            </button>
+
+            <button type="submit">
+                {{ cocktailId ? 'Modifier' : 'Ajouter' }} Cocktail
+            </button>
+        </form>
+    </div>
+</div>

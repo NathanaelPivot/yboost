@@ -1,5 +1,19 @@
-<section>
-    <div class="commande" *ngFor="let article of basket$ | async">
-        <p>{{article.name}}</p>
+<section class="basket-container">
+  <div class="basket-content">
+    <h2>Votre Panier</h2>
+
+    <!-- Si le panier est vide, afficher un message -->
+    <div *ngIf="(basket$ | async)?.length === 0" class="empty-message">
+      <p>Votre panier est vide.</p>
     </div>
+
+    <!-- Liste des articles du panier -->
+    <div class="commande" *ngFor="let article of (basket$ | async) ?? []">
+      <p>{{ article.name }}
+        <span *ngIf="article.quantity"> x{{ article.quantity }}</span>
+      </p>
+      <button (click)="removeOneFromBasket(article)">⛌ Supprimer</button>
+    </div>
+
+  </div>
 </section>

@@ -1,41 +1,96 @@
-
-section{
-    overflow-x: hidden;
-    h1{
-        width: 100%;
-    }
+section {
     width: 100%;
-    height: auto;
+    min-height: 100vh;
+    padding: 50px 5%;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    gap: 100px;
-    .cocktail{
-        width: 200px;
-        height: 250px;
-        background-color: #e2e2e2;
+    background: var(--background-gradient);
+    overflow-x: hidden;
 
+    h1 {
+        width: 100%;
+        text-align: center;
+        color: var(--text-color);
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+    }
+
+    .cocktails-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; // Centrage des cocktails
+        gap: 30px;
+    }
+
+    .cocktail {
+        width: 220px;
+        height: 280px;
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--card-border);
+        border-radius: 15px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        .infos-ctn{
-            width: 200px;
-            height: 200px;
+        justify-content: space-between;
+        padding: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
 
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .infos-ctn {
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            text-align: center;
+
+            img {
+                width: 140px;
+                height: 140px;
+                border-radius: 10px;
+                object-fit: cover;
+                transition: transform 0.3s;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+
+            p {
+                margin: 5px 0;
+                color: var(--text-color);
+                font-size: 1.1rem;
+                font-weight: bold;
+            }
         }
-        button{
+
+        button {
             width: 100%;
             height: 50px;
-        }
-        
-        img{
-            width: 140px;
-            height: 140px;
+            background: var(--button-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background: var(--button-hover);
+                transform: scale(1.05);
+            }
         }
     }
 }

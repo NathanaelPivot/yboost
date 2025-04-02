@@ -8,6 +8,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfilComponent } from './profil/profil.component';
+import { CocktailFormComponent } from './cocktail-form/cocktail-form.component';
+import { CocktailListComponent } from './cocktail-list/cocktail-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
@@ -17,7 +19,10 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profil', component: ProfilComponent },
   { path: 'commande', component: BasketComponent },
-  { path: 'dashboard', component: DashboardComponent},
+  
+  { path: 'dashboard', component: CocktailListComponent },
+  { path: 'add-cocktail', component: CocktailFormComponent },
+  { path: 'edit-cocktail/:id', component: CocktailFormComponent }
 ];
 
 @NgModule({

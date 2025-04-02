@@ -1,0 +1,195 @@
+/* Container principal qui occupe toute la page */
+.cocktail-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 88vh;
+    background: var(--background-gradient);
+    padding: 20px;
+}
+
+.cocktail-form {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(0, 0, 0, 0.6);
+    /* Fond légèrement transparent */
+    border-radius: 15px;
+    padding: 40px 30px;
+    color: var(--text-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+h2 {
+    color: var(--text-color);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-weight: bold;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: var(--background-gradient);
+    color: var(--text-color);
+    /* Couleur du texte dans l'input */
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+        /* Couleur plus claire pour les placeholders */
+        opacity: 1;
+        /* Assure une bonne visibilité */
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        background-color: #1b3650;
+    }
+
+    /* Style spécifique pour l'input de fichier */
+    &[type="file"] {
+        background-color: transparent;
+        color: var(--text-color);
+        padding: 8px;
+        cursor: pointer;
+
+        &::file-selector-button {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: var(--button-hover);
+            }
+        }
+    }
+}
+
+button[type="button"],
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: var(--button-hover);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+button[type="button"] {
+    background-color: var(--secondary-color);
+    font-size: 0.9rem;
+    padding: 8px;
+
+    &:hover {
+        background-color: #e67e22;
+    }
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    font-size: 1rem;
+    padding: 12px;
+
+    &:hover {
+        background-color: var(--button-hover);
+    }
+}
+
+.ingredients-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Ajoute de l’espace entre chaque ingrédient */
+    margin-bottom: 20px;
+}
+
+/* Chaque ligne d'ingrédient */
+.ingredient-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    // gap: 15px;
+    /* Ajoute un espace entre les champs de chaque ingrédient */
+    width: 100%;
+
+    input {
+        margin-bottom: 0;
+    }
+
+    #ingredient-input {
+        width: 50%;
+    }
+}
+
+/* Bouton de suppression d'ingrédient */
+.ingredient-item button {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #e67e22;
+    }
+}
+
+.add-ingredient-btn {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #2980b9;
+    }
+}

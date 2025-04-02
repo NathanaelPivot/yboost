@@ -1,0 +1,147 @@
+/* Conteneur principal */
+body {
+    position: relative;
+    margin-top: 10vh;
+    /* Décale tout le contenu sous le header */
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    background: var(--background-gradient);
+    /* Dégradé de fond */
+    overflow: hidden;
+    /* Empêche le débordement du conteneur */
+    position: relative;
+    /* Nécessaire pour que le contenu de la dashboard se place correctement */
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.title h2 {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.title button {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    /* Espace entre le titre et le bouton */
+
+    &:hover {
+        background-color: var(--button-hover);
+    }
+}
+
+.dashboard {
+    width: 80%;
+    max-width: 1000px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--card-border);
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(100vh - 100px);
+    /* Limite la hauteur en fonction de l'espace disponible (100px pour le padding + header) */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    th,
+    td {
+        padding: 12px 15px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: var(--card-bg);
+        color: var(--text-color);
+    }
+
+    tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+td {
+    color: #fff;
+    font-size: 1rem;
+}
+
+/* Séparer les actions avec un espacement uniforme */
+.actions {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    /* Espace uniforme entre les boutons */
+}
+
+button {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+
+    &.detail {
+        background-color: var(--accent-color);
+
+        &:hover {
+            background-color: #2980b9;
+            /* Lagon un peu plus sombre */
+        }
+    }
+
+    &.delete {
+        background-color: #e74c3c;
+        /* Rouge fruité */
+
+        &:hover {
+            background-color: #c0392b;
+            /* Rouge plus foncé */
+        }
+    }
+
+    &.edit {
+        background-color: #f39c12;
+        /* Jaune */
+
+        &:hover {
+            background-color: #e67e22;
+            /* Jaune plus foncé */
+        }
+    }
+
+    &:hover {
+        background-color: var(--button-hover);
+    }
+}
+
+a {
+    text-decoration: none;
+}

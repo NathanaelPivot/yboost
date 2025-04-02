@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private readonly apiUrl = 'http://localhost:3000';
-  private readonly isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  private readonly isAuthenticatedSubject = new BehaviorSubject<boolean>(this.isAuthenticated());
 
-  constructor(private readonly http: HttpClient) {
-    this.isAuthenticatedSubject.next(this.isAuthenticated());
-  }
+  constructor(private readonly http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
     return this.http.post<{ token: string }>(`${this.apiUrl}/auth/login`, { username, password })
       .pipe(
-        tap(response => {
-          this.saveToken(response.token);
-          this.isAuthenticatedSubject.next(true);
+        tap(response => this.saveToken(response.token)), // Met à jour l'authentification après connexion
+        catchError(error => {
+          console.error('Erreur lors de la connexion:', error);
+          return throwError(error);
         })
       );
   }
@@ -31,20 +31,18 @@ export class AuthService {
   saveToken(token: string): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('jwtToken', token);
+      this.isAuthenticatedSubject.next(true); // Met à jour l'état après connexion
     }
   }
 
   getToken(): string | null {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      return localStorage.getItem('jwtToken');
-    }
-    return null;
+    return typeof window !== 'undefined' && window.localStorage ? localStorage.getItem('jwtToken') : null;
   }
 
   clearToken(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.removeItem('jwtToken');
-      this.isAuthenticatedSubject.next(false); // Met à jour l'état de l'authentification
+      this.isAuthenticatedSubject.next(false); // Met à jour l'état après déconnexion
     }
   }
 
@@ -65,12 +63,14 @@ export class AuthService {
   }
 
   logout(): void {
-    this.clearToken(); // Déconnexion
+    this.clearToken();
   }
 
   private decodeToken(token: string): any {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    return JSON.parse(atob(base64));
+    try {
+      return jwtDecode(token);
+    } catch (error) {
+      throw new Error('Token invalide');
+    }
   }
 }

@@ -1,8 +1,7 @@
 <header>
     <div class="accueil-ctn">
-        <button routerLink="/" onload="updateStatus()">Accueil</button>
+        <img routerLink="/" src="assets/logo.png" alt="">
     </div>
-
     <div class="login-panier">
         <button routerLink="/commande">Commande</button>
         <button *ngIf="!isLogged" routerLink="/login">Login</button>

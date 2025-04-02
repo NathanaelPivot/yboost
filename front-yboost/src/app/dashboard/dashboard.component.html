@@ -8,7 +8,7 @@
   <div>
     <label for="price">Prix</label>
     <input id="price" formControlName="price" type="number">
-   </div>
+  </div>
 
   <div>
     <label for="image">Image</label>
@@ -20,6 +20,13 @@
       <label for="ingredient-name-{{ i }}">Nom de l'Ingrédient</label>
       <input id="ingredient-name-{{ i }}" formControlName="name" type="text">
 
+      <!-- Suggestions -->
+      <ul *ngIf="ingredientSuggestions[i] && ingredientSuggestions[i].length > 0">
+        <li *ngFor="let suggestion of ingredientSuggestions[i]">
+          <span (click)="onIngredientSelect(i, suggestion)">{{ suggestion.name }}</span>
+        </li>
+      </ul>
+
       <label for="ingredient-quantity-{{ i }}">Quantité</label>
       <input id="ingredient-quantity-{{ i }}" formControlName="quantity" type="text">
 
@@ -30,3 +37,26 @@
 
   <button type="submit" [disabled]="cocktailForm.invalid">Ajouter Cocktail</button>
 </form>
+
+<hr>
+
+<!-- Formulaire de recherche et affichage du cocktail sélectionné -->
+<div>
+  <h3>Supprimer un Cocktail</h3>
+  <input [(ngModel)]="searchTerm" (ngModelChange)="onSearchChange()" type="text" placeholder="Rechercher un cocktail">
+
+  <!-- Suggestions de cocktails -->
+  <ul *ngIf="cocktailSuggestions.length > 0">
+    <li *ngFor="let cocktail of cocktailSuggestions">
+      <span (click)="onCocktailSelect(cocktail)">{{ cocktail.name }}</span>
+    </li>
+  </ul>
+
+  <div *ngIf="selectedCocktail" class="preview-cocktail">
+    <h4>{{ selectedCocktail.name }}</h4>
+    <img [src]="selectedCocktail.image" alt="{{ selectedCocktail.name }}" />
+    <button (click)="onDeleteCocktail(selectedCocktail.id)">Supprimer</button>
+  </div>
+
+  <div *ngIf="cocktailSuggestions.length === 0">Aucun cocktail trouvé</div>
+</div>

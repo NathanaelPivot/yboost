@@ -9,12 +9,14 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { BasketComponent } from './basket/basket.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { FormsModule }from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { BasketService } from './services/basket.service';
 import { ProfilComponent } from './profil/profil.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CocktailFormComponent } from './cocktail-form/cocktail-form.component';
+import { CocktailListComponent } from './cocktail-list/cocktail-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BasketComponent,
     DashboardComponent,
     RegisterComponent,
-    ProfilComponent
+    ProfilComponent,
+    CocktailFormComponent,
+    CocktailListComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,7 @@ import { ReactiveFormsModule } from '@angular/forms';
       multi: true,
     },
     [BasketService]
-    
+
   ],
   bootstrap: [AppComponent]
 })

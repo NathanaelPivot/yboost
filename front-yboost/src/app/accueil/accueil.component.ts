@@ -9,16 +9,20 @@ import { BasketService } from '../services/basket.service';
   styleUrls: ['./accueil.component.scss'],
 })
 export class AccueilComponent implements OnInit {
-  
+
   cocktails: Cocktail[] = [];
 
-  constructor(private readonly cocktailService: CocktailService, private readonly basketService: BasketService) {}
+  constructor(private readonly cocktailService: CocktailService, private readonly basketService: BasketService) { }
 
   ngOnInit(): void {
-    this.cocktailService.getCocktails().subscribe((value : Cocktail[] )=> {this.cocktails = value});
+    this.cocktailService.getCocktails().subscribe((value: Cocktail[]) => { this.cocktails = value });
   }
 
   addToBasket(cocktail: Cocktail) {
     this.basketService.addToBasket(cocktail);
+  }
+
+  onImageError(event: Event) {
+    (event.target as HTMLImageElement).src = 'assets/error_image.jpg';
   }
 }

@@ -1,0 +1,30 @@
+<div class="dashboard-container">
+  <div class="title">
+    <h2 class="title">Liste des Cocktails</h2>
+    <button (click)="onAddCocktail()">Ajouter un Cocktail</button>
+  </div>
+  <div class="dashboard">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cocktail of cocktails">
+          <td>{{ cocktail.id }}</td>
+          <td>{{ cocktail.name }}</td>
+          <td class="actions">
+            <a routerLink="/detail/{{cocktail.id}}">
+              <button class="detail">Détails</button>
+            </a>
+            <button class="edit" (click)="onEditCocktail(cocktail.id)">Modifier</button>
+            <button class="delete" (click)="onDeleteCocktail(cocktail.id)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
