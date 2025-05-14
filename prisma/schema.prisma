@@ -1,0 +1,64 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Order {
+  id        Int             @id @default(autoincrement())
+  cocktails OrderCocktail[]
+}
+
+model OrderCocktail {
+  id         Int @id @default(autoincrement())
+  orderId    Int
+  cocktailId Int
+  quantity   Int
+
+  order    Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  cocktail Cocktail @relation(fields: [cocktailId], references: [id], onDelete: Cascade)
+}
+
+model Cocktail {
+  id            Int                  @id @default(autoincrement())
+  name          String
+  price         Decimal              @db.Decimal(5, 2)
+  image         String
+  ingredients   CocktailIngredient[]
+  OrderCocktail OrderCocktail[]
+
+  @@map("cocktails")
+}
+
+model Ingredient {
+  id        Int                  @id @default(autoincrement())
+  name      String               @unique
+  stock     Int                  @default(0)
+  cocktails CocktailIngredient[]
+
+  @@map("ingredients")
+}
+
+model CocktailIngredient {
+  cocktail_id   Int
+  ingredient_id Int
+  quantity      Int
+  cocktail      Cocktail   @relation(fields: [cocktail_id], references: [id], onDelete: Cascade)
+  ingredient    Ingredient @relation(fields: [ingredient_id], references: [id], onDelete: Cascade)
+
+  @@id([cocktail_id, ingredient_id])
+  @@map("cocktail_ingredients")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique // Ajoute l'attribut @unique ici
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
